@@ -12,5 +12,8 @@
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/integration/step_definitions/"
+  },
+  "dependencies": {
+    "cucumber-expressions": "^8.3.0"
   }
 }
