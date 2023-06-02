@@ -5,12 +5,12 @@ Cypress is an open-source tool that helps to test web applications and ensure th
 
 
 1. run Cypress in headless mode (for cicd)
-    a. how to run all case ?
+a. how to run all case ?
 
 - yarn test 
 
-    a. how to run detail case ?
-    example
+b. how to run detail case ?
+example
 
 - yarn test --spec "cypress/integration/login.feature"
 
