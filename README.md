@@ -7,6 +7,7 @@ Cypress is an open-source tool that helps to test web applications and ensure th
 1. Installing package
 ```
 yarn
+```
 
 ## How to run
 
