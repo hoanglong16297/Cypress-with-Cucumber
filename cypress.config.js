@@ -1,4 +1,6 @@
 const { defineConfig } = require('cypress');
+const dotenv = require('dotenv');
+dotenv.config();
 
 module.exports = defineConfig({
   e2e: {
@@ -7,7 +9,7 @@ module.exports = defineConfig({
     },
     specPattern: 'cypress/integration/**/*.feature',
     video: false,
-    baseUrl: 'https://staging-app.e-ra.io/',
+    baseUrl: process.env.REACT_APP_BASE_URL,
     viewportWidth: 1280,
     viewportHeight: 720,
     defaultCommandTimeout: 5000,
