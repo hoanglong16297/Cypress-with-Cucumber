@@ -14,7 +14,8 @@ Feature: Login functionality
     Then I should see the error message "Incorrect username or password"
 
   Scenario: Successful logout
-    Given I am logged in
+    When I login with 0987655555 and f:Q~1x%ga'r)+=a
     Then I should see the header dropdown
     When I log out
     Then I should be logged out
+
