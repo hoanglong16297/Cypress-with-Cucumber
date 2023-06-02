@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import Routes from '../../../utils/Route';
+import Routes from '../../../Constant';
 
 
 Given('I visit the login page', () => {
@@ -22,8 +22,12 @@ When('I enter {string} into the password field', (password) => {
   cy.get('[testid="COMMON_INPUT"]').type(password);
 });
 
-Given('I am logged in', () => {
-  cy.login();
+When('I am logged in', ({ username, password }) => {
+  cy.login(username, password);
+});
+
+When(/^I login with (.*) and (.*)$/, async (username, password) => {
+  cy.login(username, password);
 });
 
 Then('I should see the header dropdown', () => {
