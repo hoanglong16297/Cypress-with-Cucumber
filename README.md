@@ -12,7 +12,7 @@ yarn
 ## How to run
 
 1. run Cypress in headless mode (for cicd)
-1.a how to run all case ?
+a. how to run all case ?
 
 ```
 yarn test
