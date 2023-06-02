@@ -1,5 +1,5 @@
 import { Given, When, Then } from 'cypress-cucumber-preprocessor/steps';
-import Routes from '../../../Constant';
+import Routes from '../../../utils/Route';
 
 
 Given('I visit the login page', () => {

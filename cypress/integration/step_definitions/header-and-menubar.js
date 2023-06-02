@@ -1,5 +1,5 @@
 import { When } from 'cypress-cucumber-preprocessor/steps';
-import Routes from '../../../Constant';
+import Routes from '../../../utils/Route';
 
 
 When('I check the news popover is visible', () => {
