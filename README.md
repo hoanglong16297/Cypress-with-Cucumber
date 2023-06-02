@@ -10,7 +10,6 @@ yarn install
 ```
 
 ## How to run
-
 1. run Cypress in headless mode (for cicd)
 a. how to run all case ?
 
@@ -24,7 +23,6 @@ example
 ```
 yarn test --spec "cypress/integration/login.feature"
 ```
-
 2 .run Cypress in non-headless mode (for dev and tester)
 
 ```
