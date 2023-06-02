@@ -14,15 +14,20 @@ yarn
 1. run Cypress in headless mode (for cicd)
 a. how to run all case ?
 
-- yarn test 
+```
+yarn test
+```
 
 b. how to run detail case ?
 example
 
-- yarn test --spec "cypress/integration/login.feature"
-
+```
+yarn test --spec "cypress/integration/login.feature"
+```
 
 2 .run Cypress in non-headless mode (for dev and tester)
 
-- yarn cypress open
+```
+yarn cypress open
+```
 
