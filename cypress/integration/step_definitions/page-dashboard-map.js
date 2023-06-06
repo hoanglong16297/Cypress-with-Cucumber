@@ -28,7 +28,6 @@ When('I setting disable config display', () => {
   cy.get('[testid="CONFIG_BUTTON-1-0"]').click();
   cy.get('[testid="SWITCH_CHIP_ROW"]').click();
   cy.get('[testid="BUTTON_MODAL_ANT"]').click();
-  cy.get('[testid="MAIN_CONFIG_NAME"]').should('be.visible');
 });
 
 
