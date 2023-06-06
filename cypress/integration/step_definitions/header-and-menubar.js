@@ -79,3 +79,13 @@ When('I verify the general privacy policy link attributes', () => {
     .and('have.attr', 'target', '_blank')
     .and('have.attr', 'rel', 'noreferrer');
 });
+
+When('I click button close menu', () => {
+  cy.get('[testid="ICON_CLOSE_MENU"]').click();
+  cy.get('[testid="ICON_EXTEND_MENU"]').should('be.visible')
+});
+
+When('I click button extend menu', () => {
+  cy.get('[testid="ICON_EXTEND_MENU"]').click();
+  cy.get('[testid="ICON_CLOSE_MENU"]').should('be.visible')
+});
