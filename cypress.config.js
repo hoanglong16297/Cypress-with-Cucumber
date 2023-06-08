@@ -9,6 +9,7 @@ module.exports = defineConfig({
     },
     specPattern: 'cypress/integration/**/*.feature',
     video: false,
+    // baseUrl: process.env.REACT_APP_BASE_URL,
     baseUrl: 'http://localhost:3000',
     viewportWidth: 1280,
     viewportHeight: 720,

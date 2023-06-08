@@ -4,7 +4,7 @@ Feature: Page Devmode Dashboards
     Given I visit the login page
 
   Scenario: Page Devmode Dashboards
-    When I login with 0901603859 and Doloi123
+    When I login with 0987655555 and f:Q~1x%ga'r)+=a
     And I check the sectionTab all dashboard
     And I type "EoH Office" in the search input
     Then I see display the expected 1 element in table

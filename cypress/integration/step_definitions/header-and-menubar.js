@@ -1,7 +1,6 @@
 import { When } from 'cypress-cucumber-preprocessor/steps';
 import Routes from '../../../utils/Route';
 
-
 When('I check the news popover is visible', () => {
   cy.get('[testid="BUTTON_NEWS"]').click();
   cy.get('.ant-popover').should('be.visible');
@@ -82,10 +81,10 @@ When('I verify the general privacy policy link attributes', () => {
 
 When('I click button close menu', () => {
   cy.get('[testid="ICON_CLOSE_MENU"]').click();
-  cy.get('[testid="ICON_EXTEND_MENU"]').should('be.visible')
+  cy.get('[testid="ICON_EXTEND_MENU"]').should('be.visible');
 });
 
 When('I click button extend menu', () => {
   cy.get('[testid="ICON_EXTEND_MENU"]').click();
-  cy.get('[testid="ICON_CLOSE_MENU"]').should('be.visible')
+  cy.get('[testid="ICON_CLOSE_MENU"]').should('be.visible');
 });
