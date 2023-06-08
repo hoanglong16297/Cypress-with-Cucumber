@@ -28,7 +28,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   }  
 }
