@@ -26,3 +26,15 @@ When('should allow the browser to know your location', () => {
     );
   });
 });
+
+When('I click button create unit at page devmode dashboard', () => {
+  cy.get('[testid="BUTTON_HEADER"]').click();
+});
+
+When('I enter {string} into the unit name field', (phoneNumber) => {
+  cy.get('[testid="INPUT_NAME_UNIT"]').type(phoneNumber);
+});
+
+When('I click button submit create unit', () => {
+  cy.get('[testid="BUTTON_SUBMIT"]').click();
+});
