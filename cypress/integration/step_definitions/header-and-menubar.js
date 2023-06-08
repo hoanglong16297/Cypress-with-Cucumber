@@ -6,7 +6,7 @@ When('I check the news popover is visible', () => {
   cy.get('.ant-popover').should('be.visible');
 });
 
-  When('I check the documentation popover is visible', () => {
+     When('I check the documentation popover is visible', () => {
   cy.get(
     'a[href="https://era-open-iot-platform.gitbook.io/documentation/"]'
   ).as('documentationLink');
