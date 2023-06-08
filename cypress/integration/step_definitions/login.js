@@ -17,7 +17,7 @@ When('I enter {string} into the phone number field', (phoneNumber) => {
   cy.get('[testid="INPUT_PHONE_NUMBER"]').type(phoneNumber);
 });
 
-When('I enter {string} into the password field', (password) => {
+    When('I enter {string} into the password field', (password) => {
   cy.get('[testid="COMMON_INPUT"]').type(password);
 });
 
