@@ -1,20 +1,19 @@
 import { When } from 'cypress-cucumber-preprocessor/steps';
 
 When('I see dashboard Google map', () => {
-  cy.get('[testid="DASHBOARD_GOOGLE_MAP"]').should('be.visible')
+  cy.get('[testid="DASHBOARD_GOOGLE_MAP"]').should('be.visible');
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(3000);
 });
 
 When('I see table station in Google map', () => {
   cy.get('[testid="WRAP_CHIP-0-0"]').click();
-  cy.get('div.iw-header')
-  .should('exist')
-  .should('have.class', 'iw-header')
+  cy.get('div.iw-header').should('exist').should('have.class', 'iw-header');
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(1000);
   cy.get('[testid="BUTTON_NAVIGATE_STATION_DETAIL"]').click();
   cy.get('[testid="STATION_NAME"]').should('be.visible');
 });
-
 
 When('I setting enable config display', () => {
   cy.get('[testid="CONFIG_BUTTON-1-0"]').click();
@@ -29,8 +28,3 @@ When('I setting disable config display', () => {
   cy.get('[testid="SWITCH_CHIP_ROW"]').click();
   cy.get('[testid="BUTTON_MODAL_ANT"]').click();
 });
-
-
-
-
-

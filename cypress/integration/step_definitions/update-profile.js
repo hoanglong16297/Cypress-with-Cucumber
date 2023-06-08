@@ -1,7 +1,8 @@
 import { When } from 'cypress-cucumber-preprocessor/steps';
 
 When('I click {string} into the name field', (data) => {
-  cy.get('[testid="INPUT_NAME_PROFILE"]').clear().type(data);
+  cy.get('[testid="INPUT_NAME_PROFILE"]').clear();
+  cy.get('[testid="INPUT_NAME_PROFILE"]').type(data);
 });
 
 When('I should see the name input as {string}', (data) => {
