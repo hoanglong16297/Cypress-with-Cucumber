@@ -18,12 +18,15 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          apt-get update
+          apt-get -y install xvfb
+          yarn install
 
       - name: Run Cypress Tests
         run: |
           echo "Running Yarn test"
-          test_output=$(yarn test)
+          test_output=$(Xvfb :99 -screen 0 1024x768x24 >/dev/null 2>&1 & yarn test)
           echo "$test_output"
 
       - name: Check test results
