@@ -23,6 +23,7 @@ Feature: Page Devmode Dashboards
     When I click dropdown at page devmode dashboard
     When I click edit unit detail at page devmode dashboard
     When I enter "Unit-test-e2e-rename-at-devmode-dashboards" into the unit name field
+    When I should allow the browser to know your location "10.8231" "106.6297"
     And  I click the submit button on the modal page of Devmode Dashboard
     Then I should see the success message "Unit updated successfully"
 

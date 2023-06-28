@@ -1,0 +1,65 @@
+name: Run Cypress Tests
+
+on:
+  repository_dispatch:
+    types:
+      - run-cypress
+
+jobs:
+  build:
+    runs-on: [self-hosted, linux, x64, general]
+    container: node:18.16.0
+
+    steps:
+      - name : Trigger
+        echo "trigger success"
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run Cypress Tests
+        run: |
+        echo "Running Yarn test"
+        test_output=$(yarn test)
+        echo "$test_output"
+
+      - name: Check test results
+        run: |
+          # Check if all specs passed
+          if echo "$test_output" | grep -q "All specs passed"; then
+            echo "All specs passed"
+          else
+            echo "Some specs failed"
+            apt-get update
+            apt-get -y install curl
+            cat << EOF > message.json
+            {
+              "@type": "MessageCard",
+              "@context": "https://schema.org/extensions",
+              "summary": "Run automation test failed!",
+              "themeColor": "ff0000",
+              "sections": [{
+                "activityTitle": "[IoT-Dashboard] Run automation test staging failed 💢!",
+                "activitySubtitle": "$GITHUB_REPOSITORY",
+                "facts": [{
+                  "name": "Job failed:",
+                  "value": "${{ steps.failed_job.outputs.result }}"
+                }, {
+                  "name": "Version:",
+                  "value": "$GITHUB_REF_NAME"
+                }]
+              }],
+              "potentialAction": [{
+                "@type": "OpenUri",
+                "name": "View workflow",
+                "targets": [{
+                  "os": "default",
+                  "uri": "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+                }]
+              }]
+            }
+            EOF
+            curl -X POST ${{ secrets.TEAMS_WEBHOOK_DEPLOY_BACKEND }} --header 'Content-Type: application/json' -d @message.json
