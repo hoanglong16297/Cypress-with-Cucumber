@@ -68,3 +68,4 @@ jobs:
             }
             EOF
             curl -X POST ${{ secrets.TEAMS_WEBHOOK_DEPLOY_BACKEND }} --header 'Content-Type: application/json' -d @message.json
+          fi
