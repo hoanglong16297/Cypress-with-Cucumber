@@ -20,14 +20,15 @@ jobs:
       - name: Install dependencies
         run: |
           apt-get update
-          apt-get -y install xvfb
+          apt-get -y install xvfb libgtk2.0-0 libgtk-3-0 libnotify-dev libgconf-2-4 libgbm-dev libnss3 libxss1 libasound2 libxtst6 xauth
           yarn install
 
       - name: Run Cypress Tests
         run: |
           echo "Running Yarn test"
-          test_output=$(Xvfb :99 -screen 0 1024x768x24 >/dev/null 2>&1 & yarn test)
-          echo "$test_output"
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1024x768x24 >/dev/null 2>&1 &
+          yarn test
 
       - name: Check test results
         run: |
