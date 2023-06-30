@@ -28,7 +28,7 @@ jobs:
           echo "Running Yarn test"
           export DISPLAY=:99
           Xvfb :99 -screen 0 1024x768x24 >/dev/null 2>&1
-          yarn test > test_output.txt || echo "Tests failed"
+          yarn test
 
       - name: Check test results
         run: |
