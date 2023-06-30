@@ -24,16 +24,18 @@ jobs:
           yarn install
 
       - name: Run Cypress Tests
+        id: cypress-tests
         run: |
           echo "Running Yarn test"
           export DISPLAY=:99
           Xvfb :99 -screen 0 1024x768x24 >/dev/null 2>&1 &
           yarn test
+          echo "::set-output name=outcome::${{ job.status }}"
 
       - name: Check test results
         run: |
           # Check if all specs passed
-          if grep -q "All specs passed" test_output.txt; then
+          if [[ "${{ steps.cypress-tests.outcome }}" == 'success' ]]; then
             echo "All specs passed"
           else
             echo "Some specs failed"
@@ -50,7 +52,7 @@ jobs:
                 "activitySubtitle": "$GITHUB_REPOSITORY",
                 "facts": [{
                   "name": "Job failed:",
-                  "value": "${{ steps.failed_job.outputs.result }}"
+                  "value": "${{ steps.cypress-tests.outputs.result }}"
                 }, {
                   "name": "Version:",
                   "value": "$GITHUB_REF_NAME"
