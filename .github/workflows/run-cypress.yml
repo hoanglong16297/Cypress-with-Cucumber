@@ -27,14 +27,13 @@ jobs:
         run: |
           echo "Running Yarn test"
           export DISPLAY=:99
-          Xvfb :99 -screen 0 1024x768x24 >/dev/null 2>&1 &
-          test_output=$(yarn test)
-          echo "$test_output"
+          Xvfb :99 -screen 0 1024x768x24 >/dev/null 2>&1
+          yarn test > test_output.txt || echo "Tests failed"
 
       - name: Check test results
         run: |
           # Check if all specs passed
-          if echo "$test_output" | grep -q "All specs passed"; then
+          if grep -q "All specs passed" test_output.txt; then
             echo "All specs passed"
           else
             echo "Some specs failed"
