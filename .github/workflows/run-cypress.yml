@@ -57,9 +57,6 @@ jobs:
               "activitySubtitle": "$GITHUB_REPOSITORY",
               "activityImage": "https://github.com/${{ github.actor }}.png",
               "facts": [{
-                "name": "",
-                "value": ""
-              }, {
                 "name": "Triggered by:",
                 "value": "${{ github.actor }}"
               }, {
