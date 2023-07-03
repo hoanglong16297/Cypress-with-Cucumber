@@ -31,13 +31,14 @@ jobs:
           export DISPLAY=:99
           Xvfb :99 -screen 0 1024x768x24 >/dev/null 2>&1 &
           yarn test
-          echo "OUTCOME=${{ job.status }}" >> $GITHUB_ENV
 
+  check-test-result:
+    if: ${{ always() && needs.build.result == 'failure' }}
+    runs-on: [self-hosted, linux, x64, general]
+    container: node:18.16.0
+    needs: [build]
+
+    steps:
       - name: Check test results
         run: |
-          if [[ "${{ needs.cypress-tests.result }}" == 'success' ]]; then
-            echo "All specs passed"
-          else
-            echo "Some specs failed"
-          fi
-
+          echo "All specs fail"
