@@ -41,4 +41,49 @@ jobs:
     steps:
       - name: Check test results
         run: |
-          echo "All specs fail"
+          echo "Some specs fail"
+      - name: Get failed job
+        id: failed_job
+        run: |
+          cat << EOF > message.json
+          ${{ toJSON(needs) }}
+          EOF
+          foo=$(cat message.json)
+          echo $foo
+          python .github/scripts/get_failed_job.py $foo
+      - name: Notify deploy fail
+        run: |
+          apt-get update
+          apt-get -y install curl
+          cat << EOF > message.json
+          {
+            "@type": "MessageCard",
+            "@context": "https://schema.org/extensions",
+            "summary": "Deploy frontend failed!",
+            "themeColor": "ff0000",
+            "sections": [{
+              "activityTitle": "[IoT-Dashboard] Deploy production failed 💢!",
+              "activitySubtitle": "$GITHUB_REPOSITORY",
+              "activityImage": "https://github.com/${{ github.actor }}.png",
+              "facts": [{
+                "name": "Job failed:",
+                "value": "${{ steps.failed_job.outputs.result }}"
+              }, {
+                "name": "Triggered by:",
+                "value": "${{ github.actor }}"
+              }, {
+                "name": "Version:",
+                "value": "$GITHUB_REF_NAME"
+              }]
+            }],
+            "potentialAction": [{
+              "@type": "OpenUri",
+              "name": "View workflow",
+              "targets": [{
+                "os": "default",
+                "uri": "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+              }]
+            }]
+          }
+          EOF
+          curl -X POST ${{ secrets.TEAMS_WEBHOOK_DEPLOY_BACKEND }} --header 'Content-Type: application/json' -d @message.json
