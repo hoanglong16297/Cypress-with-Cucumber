@@ -35,7 +35,7 @@ jobs:
 
       - name: Check test results
         run: |
-          if [[ "${{ env.TEST_RESULT }}" -eq 0 ]]; then
+          if [[ "${{ env.OUTCOME }}" == 'success' ]]; then
             echo "All specs passed"
           else
             echo "Some specs failed"
