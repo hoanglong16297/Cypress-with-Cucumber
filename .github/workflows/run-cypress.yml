@@ -32,7 +32,7 @@ jobs:
           Xvfb :99 -screen 0 1024x768x24 >/dev/null 2>&1 &
           yarn test
 
-  check-test-result:
+  notify-cypress-fail:
     if: ${{ always() && needs.build.result == 'failure' }}
     runs-on: [self-hosted, linux, x64, general]
     container: node:18.16.0
@@ -42,7 +42,7 @@ jobs:
       - name: Check test results
         run: |
           echo "Some specs fail"
-      - name: Notify deploy fail
+      - name: Notify cypress fail
         run: |
           apt-get update
           apt-get -y install curl
@@ -57,7 +57,7 @@ jobs:
               "activitySubtitle": "$GITHUB_REPOSITORY",
               "activityImage": "https://github.com/${{ github.actor }}.png",
               "facts": [{
-                "name": "Job failed:",
+                "name": "",
                 "value": ""
               }, {
                 "name": "Triggered by:",
