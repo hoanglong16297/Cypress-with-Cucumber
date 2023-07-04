@@ -13,8 +13,6 @@ Feature: Header and Menubar
     And I check the sectionTab list section
 
   Scenario: MenuBar
-    When I click button close menu
-    And I click button extend menu
     And I verify the subscriptionlink attributes
     And I go back
     And I verify the server status link attributes
