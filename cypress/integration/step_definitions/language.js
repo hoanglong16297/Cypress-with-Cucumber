@@ -1,6 +1,8 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
 
 When('I click the language setting icon', () => {
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
+  cy.wait(5000);
   cy.get('[testid="WRAP_ICON_LANGUAGE"]').click();
 });
 
