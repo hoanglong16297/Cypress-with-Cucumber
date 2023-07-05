@@ -1,6 +1,8 @@
 import { When, Then } from 'cypress-cucumber-preprocessor/steps';
 
 When('I click the language setting icon', () => {
+  cy.get('[testid="WRAP_ICON_LANGUAGE"]', { timeout: 15000 }) // Wait for the element
+    .should('exist');
   cy.get('[testid="WRAP_ICON_LANGUAGE"]').click();
 });
 
