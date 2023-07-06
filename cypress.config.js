@@ -19,6 +19,6 @@ module.exports = defineConfig({
     responseTimeout: 120000,
     watchForFileChanges: true,
     experimentalRunAllSpecs: true,
-    screenshotOnRunFailure: true,
+    screenshotOnRunFailure: false,
   },
 });
