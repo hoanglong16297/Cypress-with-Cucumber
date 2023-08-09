@@ -18,7 +18,7 @@ When('I see table station in Google map', () => {
 When('I setting enable config display', () => {
   cy.get('[testid="CONFIG_BUTTON-1-0"]').click();
   cy.get('[testid="SWITCH_CHIP_ROW"]').click();
-  cy.get('[testid="RADIO_CHIP_ROW-0"]').click();
+  cy.get('[testid="RADIO_CHIP_ROW-0"]').click({force: true});
   cy.get('[testid="BUTTON_MODAL_ANT"]').click();
   cy.get('[testid="MAIN_CONFIG_NAME"]').should('be.visible');
 });
