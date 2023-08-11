@@ -2,10 +2,10 @@ import {When} from 'cypress-cucumber-preprocessor/steps';
 import Routes from '../../../utils/Route';
 
 When('I visit Manage Unit at page devmode dashboard', () => {
-  cy.get('[testid="LONGID_MANAGE_UNIT"]').click();
+  cy.get('[id="BUTTON_MANAGE_UNIT"]').click();
 });
 
-When('I click button Add Unit', () => {
+When('I click the Add Unit button', () => {
   cy.get('[testid="BUTTON_HEADER"]').click();
 });
 
@@ -13,29 +13,35 @@ When('I click button location', () => {
   cy.get('[testid="GET_CURRENT_LOCATION_BUTTON"]').click();
 });
 
-When('I fill the Unit Name', () => {
+When('I provide a name for the unit', () => {
   cy.get('[testid="INPUT_NAME_UNIT"]')
-    .type('Long-test-devmode-manage-unit')
-    .should('have.value', 'Long-test-devmode-manage-unit');
+    .type('Long-test-devmode-unit')
+    .should('have.value', 'Long-test-devmode-unit');
 });
 
-When('I Fill Search Unit', () => {
+When('I search for {string} in the search input', (searchText) => {
   cy.get('[testid="SEARCH_INPUT"]')
-    .click()
-    .type('Long-test-devmode-manage-unit')
-    .should('have.value', 'Long-test-devmode-manage-unit');
+    .clear()
+    .type(searchText);
 });
 
 When('I click Creat Button', () => {
   cy.get('[testid="BUTTON_SUBMIT"]').click();
 });
 
+When('I scroll to top page', () => {
+  cy.get('SEARCH_INPUT')
+  .shadow()
+  .find('[data-test-id="my-button"]')
+  .click({ position: 'top' })
+});
+
+
 When('I Edit Unit', () => {
-  cy.get('[testid="LONGID"]')
+  cy.get('[testid="EXPAND_UNIT_DROPDOWN_UNIT"]')
     .eq(0)
     .click();
-  cy.get('[class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"]')
-    .eq(0)
+  cy.get('[id="idEditUnit"]')
     .click();
   cy.get('[testid="INPUT_NAME_UNIT"]')
     .clear()
@@ -45,35 +51,60 @@ When('I Edit Unit', () => {
     .click();
 });
 
-When('I Add Sub Unit', () => {
-  cy.get('[testid="LONGID"]')
+When('I Add a Sub Unit', () => {
+  cy.get('[testid="EXPAND_UNIT_DROPDOWN_UNIT"]')
     .eq(0)
     .click();
-  //cy.get('[class="anticon anticon-ellipsis"]').first().click();
-  cy.get('[class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"]')
-    .eq(1)
+  cy.get('[id="idAddSubUnit"]')
     .click();
-  cy.get('[class="ant-input css-dev-only-do-not-override-1rz0uib"]')
+  cy.get('[class="ant-input css-dev-only-do-not-override-bbd4ux"]')
     .eq(2)
-    .type('Long-test-add-sub-unit')
-    .should('have.value', 'Long-test-add-sub-unit'); 
+    .type('Long-test-add-unit')
+    .should('have.value', 'Long-test-add-unit'); 
   cy.get('[testid="BUTTON_SUBMIT"]').eq(1).click();
 });
 
 When('I Delete Unit', () => {
-  cy.get('[testid="LONGID"]')
+  cy.get('[testid="EXPAND_UNIT_DROPDOWN_UNIT"]')
     .eq(0)
     .click();
-  // cy.get('[class="anticon anticon-ellipsis"]')
-  //   .click();
-  cy.get('[class="ant-dropdown-menu-item ant-dropdown-menu-item-only-child"]')
-    .eq(2)
+  cy.get('[id="idDeleteUnit]')
     .click();
   cy.get('[id="checkSquare"]').click();
   cy.get('[id="buttonDelete"]').click();
 });
 
+When('I Edit Sub Unit', () => {
+  cy.get('[testid="EXPAND_UNIT_DROPDOWN_SUB_UNIT"]')
+    .eq(0)
+    .click();
+  cy.get('[id="idEditSubUnit"]').click();
+  cy.get('[class="ant-input css-dev-only-do-not-override-bbd4ux"]')
+    .eq(1)
+    .clear()
+    .type('Long-test-edit-sub-unit')
+    .should('have.value', 'Long-test-edit-sub-unit');
+  cy.get('[testid="BUTTON_SUBMIT"]').click()
+});
 
+When('I Add a New Device Display', () => {
+  cy.get('[testid="EXPAND_UNIT_DROPDOWN_SUB_UNIT"]').click();
+  cy.get('[id="idAddNewDeviceDisplay"]').click();
+  cy.get('[class="ant-input css-dev-only-do-not-override-1rz0uib"]')
+    .eq(2)
+    .type('Long-test-add-new-device-display')
+    .should('have.value', 'Long-test-add-new-device-display');
+  cy.get('[testid="BUTTON_COMMON"]')
+    .eq(1)
+    .click()
+  cy.get('[class="ant-input css-dev-only-do-not-override-1rz0uib"]')
+    .eq(3)
+    .type('123')
+    .should('have.value', '123');
+  cy.get('[testid="ICON"]')
+    .eq(10)
+    .click()
+});
 
 When('I Delete Sub Unit', () => {
   cy.get('[class="anticon anticon-ellipsis"]').eq(1).click();
