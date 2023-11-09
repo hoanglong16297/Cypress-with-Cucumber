@@ -1,7 +1,7 @@
 import {When} from 'cypress-cucumber-preprocessor/steps';
 
 When('I visit Manage Unit at page devmode dashboard', () => {
-  cy.get('[testid="BUTTON_MANAGE_UNIT"]').click();
+  cy.get('[testid="TABLE_MANAGE_UNIT"]').click();
 });
 
 When('I click the Add Unit button', () => {

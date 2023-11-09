@@ -1,4 +1,4 @@
-  import {When, And} from 'cypress-cucumber-preprocessor/steps';
+import {When, And} from 'cypress-cucumber-preprocessor/steps';
 import Routes from '../../../utils/Route';
 import { should } from 'chai';
 
