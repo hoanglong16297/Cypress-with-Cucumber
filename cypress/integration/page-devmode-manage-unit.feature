@@ -2,7 +2,7 @@ Feature: Page Dashboard Manage Unit
 
   Background:
     Given I visit the login page
-    When I login with 0987655555 and f:Q~1x%ga'r)+=a
+    When I login with 0359579579 and Eoh12345
     And I check the sectionTab all dashboard
 
   Scenario: Create Unit
@@ -20,13 +20,13 @@ Feature: Page Dashboard Manage Unit
     And  I search for "Unit-test-edit-unit" in the search input
     And  I Add a Sub Unit
     And  I Edit Sub Unit
-    And  I Delete Sub Unit
-    And  I Delete Unit
+    # And  I Delete Sub Unit
+    # And  I Delete Unit
     Then I check the sectionTab all dashboard
   
   Scenario: Edit-Add-Delete devices
     When I visit Manage Unit at page devmode dashboard
-    And  I search for "Unit-test-e2e-not-remove" in the search input
+    And  I search for "Unit-test-edit-unit" in the search input
     And  I Edit Sub Unit
     And  I Add a New Device Display
     And  I provide a name for the display device

@@ -50,7 +50,7 @@ When('I Delete Unit', () => {
 
 When('I Edit Sub Unit', () => {
   cy.get('[testid="EXPAND_UNIT_DROPDOWN_SUB_UNIT"]').eq(0).click();
-  cy.get('[testid="MODAL_SUB_UNIT_EDIT_SUB_UNIT"]').click();
+  cy.get('[testid="MODAL_UNIT_EDIT_SUB_UNIT"]').click();
   cy.get('[testid="MODAL_INPUT_CHANGE_SUB_UNIT_NAME"]').clear()
     .type('e2e-add-new-subunit').should('have.value', 'e2e-add-new-subunit');
   cy.get('[id="buttonSubmit"]').click()
@@ -58,7 +58,7 @@ When('I Edit Sub Unit', () => {
 
 When('I Add a New Device Display', () => {
   cy.get('[testid="EXPAND_UNIT_DROPDOWN_SUB_UNIT"]').eq(0 ).click();
-  cy.get('[testid="MODAL_SUB_UNIT_ADD_NEW_DEVICE"]').click();
+  cy.get('[testid="MODAL_UNIT_ADD_NEW_DEVICE"]').click();
 });
 
 When('I provide a name for the display device', () => {
@@ -92,6 +92,6 @@ When('I Delete End Device', () => {
 
 When('I Delete Sub Unit', () => {
   cy.get('[testid="EXPAND_UNIT_DROPDOWN_SUB_UNIT"]').eq(0).click();
-    cy.get('[testid="MODAL_SUB_UNIT_DELETE_SUB_UNIT"]').click();
+    cy.get('[testid="MODAL_UNIT_DELETE_SUB_UNIT"]').click();
     cy.get('[id="submitDelete"]').click();
 });
